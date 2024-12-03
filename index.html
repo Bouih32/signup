@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          fontFamily: {
+            poppins: ["Poppins", "serif"],
+          },
+          extend: {
+            colors: {
+              main: "#20DC49",
+              errorRed: "#D93F21",
+              paraGray: "#5A5A5A",
+              mainBg: "#F0F2F5",
+            },
+            backgroundImage: {
+              loginBg: "url('/images/forget.png')",
+              signupBg: "url('/images/reset.png')",
+            },
+          },
+        },
+      };
+    </script>
+    <title>Login</title>
+  </head>
+  <body class="font-poppins flex">
+    <section class="flex-1 bg-mainBg px-[50px] pt-[40px] pb-[200px]">
+      <header class="flex justify-between items-center">
+        <div class="flex gap-[11.27px] items-center">
+          <img
+            src="images/logo.png"
+            alt="logo"
+            class="w-[29.489px] h-[29.489px]"
+          />
+          <h1 class="font-medium text-[16.932px] leading-[41.122px]">
+            Logo here
+          </h1>
+        </div>
+        <p class="font-light text-[14px] leading-[14.5px]">
+          Don’t have an account?<span class="font-medium text-main"
+            >Sign up!</span
+          >
+        </p>
+      </header>
+
+      <section class="grid place-items-center pt-[126px]">
+        <form class="max-w-[400px]">
+          <div class="space-y-[6px] text-center mb-[52px]">
+            <h2 class="font-semibold text-[36px] leading-[44px]">
+              Welcome Back
+            </h2>
+            <p class="text-[18px] leading-[29.163px]">
+              Login into your account
+            </p>
+          </div>
+
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+            class="border border-[#D9D9D9] w-full text-[14px] leading-[14.5px] p-6 bg-white outline-none rounded-[10px] text-paraGray"
+          />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+            class="border border-[#D9D9D9] w-full mt-[38px] text-[14px] leading-[14.5px] p-6 bg-white outline-none rounded-[10px] text-paraGray"
+          />
+
+          <div class="flex justify-between mt-[21px]">
+            <div class="flex gap-2 items-center">
+              <div
+                class="w-[40px] h-[20px] rounded-[36.5px] bg-[#ECECEC] border border-[#C9C9C9]"
+              ></div>
+              <p class="text-[12px] leading-[20px] tracking-[0.3px]">
+                Remember me
+              </p>
+            </div>
+            <a
+              href="/recover.html"
+              class="text-[14px] leading-[14.5px] font-light text-errorRed"
+            >
+              Recover Password
+            </a>
+          </div>
+          <button
+            id="submitBtn"
+            class="text-[18px] mt-[35px] leading-[14.5px] border border-paraGray text-paraGray w-full rounded-[10px] py-[20px]"
+          >
+            Log In
+          </button>
+        </form>
+      </section>
+    </section>
+    <section
+      class="bg-loginBg w-[40%] bg-no-repeat bg-cover flex px-[25px] pb-[49px]"
+    >
+      <div
+        class="rounded-[10px] space-y-[25px] self-end rounded-[10px] bg-[#FFF2F221] backdrop-blur-[50px] w-full pl-[25px] pr-[10px] pt-[42px] pb-[59px]"
+      >
+        <div
+          class="flex gap-[2px] items-center bg-main rounded-[10px] p-[14px] w-fit"
+        >
+          <img
+            src="images/up.png"
+            alt="thumbsup"
+            class="h-[22.052px] w-[22.052px]"
+          />
+          <p class="text-[14px] leading-[17.106px]">
+            Top Notch Stock Resources
+          </p>
+        </div>
+        <p class="text-[20px] leading-[32.967px] text-white">
+          Today, we create innovative solutions to the challenges that consumers
+          face in both their everyday lives and events.
+        </p>
+      </div>
+    </section>
+    <script>
+      const myEmail = document.querySelector("#email");
+      const myPassword = document.querySelector("#password");
+      const submitBtn = document.querySelector("#submitBtn");
+      submitBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (myEmail.value.trim() === "" || myPassword.value.trim() === "") {
+          if (myEmail.value.trim() === "") {
+            myEmail.classList.remove("border-[#D9D9D9]", "text-paraGray");
+            myEmail.classList.add(
+              "border-errorRed",
+              "placeholder:text-errorRed"
+            );
+            setTimeout(() => {
+              myEmail.classList.add("border-[#D9D9D9]", "text-paraGray");
+              myEmail.classList.remove(
+                "border-errorRed",
+                "placeholder:text-errorRed"
+              );
+            }, 2000);
+          }
+
+          if (myPassword.value.trim() === "") {
+            myPassword.classList.remove("border-[#D9D9D9]", "text-paraGray");
+            myPassword.classList.add(
+              "border-errorRed",
+              "placeholder:text-errorRed"
+            );
+            setTimeout(() => {
+              myPassword.classList.add("border-[#D9D9D9]", "text-paraGray");
+              myPassword.classList.remove(
+                "border-errorRed",
+                "placeholder:text-errorRed"
+              );
+            }, 2000);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
